@@ -5,6 +5,7 @@ const citySchema = new Schema({
     name: {
         type: String,
         required: [true, 'is required'],
+        unique: true,
     },
 });
 

@@ -13,10 +13,9 @@ const contactSchema = new Schema({
     phoneNumber: {
         type: String,
         required: [true, 'is required'],
+        unique: true,
     },
-    email: {
-        type: String,
-    },
+    email: String,
     city: {
         type: Schema.Types.ObjectId,
         ref: 'City',

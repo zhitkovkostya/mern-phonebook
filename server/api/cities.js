@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const City = require('../models/City');
 
 module.exports = {
@@ -6,6 +7,16 @@ module.exports = {
             .find({})
             .then(cities => {
                 res.send(cities);
+            })
+            .catch(next);
+    },
+    getCityById(req, res, next) {
+        console.log(req.params.id);
+        City
+            .findOne({_id: mongoose.Types.ObjectId(req.params.id)})
+            .then(city => {
+                // console.log(city);
+                res.send(city);
             })
             .catch(next);
     },

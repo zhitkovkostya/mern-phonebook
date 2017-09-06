@@ -14,6 +14,8 @@ router.route('/contacts')
 router.route('/cities')
     .get(cities.getCities)
     .post(cities.postCity);
+router.route('/cities/:id')
+    .get(cities.getCityById);
 
 
 module.exports = router;

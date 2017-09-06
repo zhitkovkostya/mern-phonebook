@@ -16,16 +16,17 @@ module.exports = {
             name: req.body.city,
         };
 
-        let city = new City(cityData);
-        city.save();
-
-        req.body.city = city._id;
+        City
+            .findOneAndUpdate({name: req.body.cityName}, {name: req.body.cityName}, {upsert: true, new: true})
+            .then(city => {
+                req.body.city = city._id;
                 
-        Contact
-            .create(req.body)
-            .then(contact => {
-                res.send(contact);
+                Contact
+                    .create(req.body)
+                    .then(contact => {
+                        res.send(contact);
+                    });
             })
-            .catch(next);
+            .catch(next);;
     }
 };

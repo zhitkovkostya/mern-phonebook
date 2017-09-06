@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditContactForm from './components/EditContactForm';
 
 class ContactsList extends Component {
     constructor() {
@@ -27,14 +28,15 @@ class ContactsList extends Component {
         const contactsList = this.state.contacts.map(contact => {
             return (
                 <div className='card' key={contact._id}>
-                    <header className='card-header'>
-                        <a data-toggle='collapse' href={'#' + contact._id} className=''>
+                    <header className='card-header' role='tab' id={'contactHeading_' + contact._id}>
+                        <a data-toggle='collapse' data-target={'#contactEditForm_' + contact._id} href={'#card_' + contact._id} aria-expanded='true' aria-controls='collapseOne'>
                             { contact.firstName } { contact.lastName }
                         </a>
+                        <span className='badge badge-secondary float-right'>{ contact.phoneNumber }</span>
                     </header>
-                    <main id={contact._id} class='collapse' role='tabpanel'>
+                    <main id={'contactEditForm_' + contact._id} className='collapse show' role='tabpanel' aria-labelledby={'contactHeading_' + contact._id}>
                         <div className='card-body'>
-                            { contact.phoneNumber }
+                            <EditContactForm contact={contact} />
                         </div>
                     </main>
                 </div>
@@ -42,7 +44,7 @@ class ContactsList extends Component {
         });
 
         return (
-            <section className='accrordion'>
+            <section className='accrordion' role='tablist'>
                 { contactsList }
             </section>
         );
