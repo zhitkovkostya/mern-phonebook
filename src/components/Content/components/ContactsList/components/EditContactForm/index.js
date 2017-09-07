@@ -72,7 +72,7 @@ class EditContactForm extends Component {
                 </div>
                 <div className='form-group'>
                     <label htmlFor={'emailInput_' + this.state._id}>Email</label>
-                    <input type='text' className='form-control' name='email' value={this.state.email} onChange={this.handleInputChange} />
+                    <input type='email' className='form-control' name='email' value={this.state.email} onChange={this.handleInputChange} />
                 </div>
                 <div className='form-group'>
                     <label htmlFor={'cityInput_' + this.state._id}>City</label>
