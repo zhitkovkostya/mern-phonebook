@@ -34,7 +34,7 @@ class ContactsList extends Component {
                         </a>
                         <span className='badge badge-secondary float-right'>{ contact.phoneNumber }</span>
                     </header>
-                    <main id={'contactEditForm_' + contact._id} className='collapse show' role='tabpanel' aria-labelledby={'contactHeading_' + contact._id}>
+                    <main id={'contactEditForm_' + contact._id} className='collapse' role='tabpanel' aria-labelledby={'contactHeading_' + contact._id}>
                         <div className='card-body'>
                             <EditContactForm contact={contact} />
                         </div>

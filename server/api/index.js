@@ -8,7 +8,8 @@ let router = express.Router();
 // set contacts endpoints
 router.route('/contacts')
     .get(contacts.getContacts)
-    .post(contacts.postContact);
+    .post(contacts.postContact)
+    .put(contacts.putContact);
 
 // set cities endpoints
 router.route('/cities')

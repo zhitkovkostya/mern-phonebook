@@ -11,11 +11,9 @@ module.exports = {
             .catch(next);
     },
     getCityById(req, res, next) {
-        console.log(req.params.id);
         City
             .findOne({_id: mongoose.Types.ObjectId(req.params.id)})
             .then(city => {
-                // console.log(city);
                 res.send(city);
             })
             .catch(next);

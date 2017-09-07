@@ -12,10 +12,6 @@ module.exports = {
             .catch(next);
     },
     postContact(req, res, next) {
-        const cityData = {
-            name: req.body.city,
-        };
-
         City
             .findOneAndUpdate({name: req.body.cityName}, {name: req.body.cityName}, {upsert: true, new: true})
             .then(city => {
@@ -23,6 +19,22 @@ module.exports = {
                 
                 Contact
                     .create(req.body)
+                    .then(contact => {
+                        res.send(contact);
+                    });
+            })
+            .catch(next);
+    },
+    putContact(req, res, next) {
+        City
+            .findOneAndUpdate({name: req.body.cityName}, {name: req.body.cityName}, {upsert: true, new: true})
+            .then(city => {
+                req.body.city = city._id;
+                
+                delete req.body.cityName;
+                
+                Contact
+                    .findByIdAndUpdate(req.body._id, req.body, {new: true, runValidators: true})
                     .then(contact => {
                         res.send(contact);
                     });
