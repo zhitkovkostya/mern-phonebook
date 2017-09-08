@@ -36,7 +36,7 @@ class ContactsList extends Component {
                     </header>
                     <main id={'contactEditForm_' + contact._id} className='collapse' role='tabpanel' aria-labelledby={'contactHeading_' + contact._id}>
                         <div className='card-body'>
-                            <EditContactForm contact={contact} />
+                            <EditContactForm method='put' contact={contact} />
                         </div>
                     </main>
                 </div>

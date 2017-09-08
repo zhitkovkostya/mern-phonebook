@@ -14,16 +14,18 @@ class EditContactForm extends Component {
     }
 
     componentWillMount(props) {
-        fetch('/api/cities/' + this.state.city, {method: 'get'})
-            .then(cityData => {
-                return cityData.json();
-            })
-            .then(city => {
-                this.setState({cityName: city.name});
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        if (this.state.city) {
+            fetch('/api/cities/' + this.state.city, {method: 'get'})
+                .then(cityData => {
+                    return cityData.json();
+                })
+                .then(city => {
+                    this.setState({cityName: city.name});
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     }
 
     handleInputChange(event) {
@@ -40,7 +42,7 @@ class EditContactForm extends Component {
         event.preventDefault();
 
         fetch('/api/contacts', {
-            method: 'put',
+            method: this.props.method,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
