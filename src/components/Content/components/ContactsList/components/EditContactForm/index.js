@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ContactsList from '../../../ContactsList';
 
 class EditContactForm extends Component {
     constructor(props) {

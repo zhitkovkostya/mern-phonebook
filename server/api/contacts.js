@@ -39,6 +39,13 @@ module.exports = {
                         res.send(contact);
                     });
             })
-            .catch(next);;
+            .catch(next);
+    },
+    deleteContact(req, res, next) {
+        Contact
+            .findByIdAndRemove(req.body._id)
+            .then(contact => {
+                res.send(contact);
+            });
     }
 };
